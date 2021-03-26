@@ -199,6 +199,7 @@ def main(local, force_pr=None):
     if len(warnings) > 0:
         warning_message = ""
         for file in warnings.keys():
+            # look at this error
             warning_message += str(file) + warning[file] + "\n\n"
         pr.create_issue_comment(comment)
     
