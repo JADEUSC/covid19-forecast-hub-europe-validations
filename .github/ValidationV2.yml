@@ -1,4 +1,4 @@
-name: Validations v2
+name: Validate_PR
 
 on:
   pull_request_target:
