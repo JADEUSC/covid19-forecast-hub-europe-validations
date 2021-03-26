@@ -196,7 +196,7 @@ def main(local, force_pr=None):
         sys.exit("\n ERRORS FOUND EXITING BUILD...")
 
     # add warnings 
-    if len(warnings) > 0:
+    if len(warning) > 0:
         warning_message = ""
         for file in warnings.keys():
             warning_message += str(file) + warnings[file] + "\n\n"
