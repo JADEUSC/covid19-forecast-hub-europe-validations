@@ -229,7 +229,7 @@ if __name__ == "__main__":
     local = os.environ.get('CI') != 'true'
     pr = None
     
-    # if changes to the validation scripts are checked, set mode to local and check pr 153 
+    # if changes to the validation scripts are checked, set mode to local and validate pr 153 
     if len(sys.argv) > 1:
         if sys.argv[1] == "check":
             local=True
