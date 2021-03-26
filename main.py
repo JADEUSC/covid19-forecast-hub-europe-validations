@@ -194,7 +194,9 @@ def main(local, force_pr=None):
     if is_meta_error or len(errors)>0:
         shutil.rmtree("forecasts")
         sys.exit("\n ERRORS FOUND EXITING BUILD...")
-
+    
+    # test
+                                       
     # add warnings 
     if len(warnings) > 0:
         warning_message = ""
