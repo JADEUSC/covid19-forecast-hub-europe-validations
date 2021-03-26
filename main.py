@@ -44,7 +44,7 @@ def main(local, force_pr=None):
     
     # mount repository
     repo_name = os.environ.get('GITHUB_REPOSITORY')
-    if repo_name is None:
+    if repo_name is None or local:
         repo_name = 'epiforecasts/covid19-forecast-hub-europe'
     repo = g.get_repo(repo_name)
     
@@ -199,7 +199,7 @@ def main(local, force_pr=None):
     if len(warnings) > 0:
         warning_message = ""
         for file in warnings.keys():
-            warning_message += str(file) + warning[file] + "\n\n"
+            warning_message += str(file) + warnings[file] + "\n\n"
         pr.create_issue_comment(comment)
     
     
