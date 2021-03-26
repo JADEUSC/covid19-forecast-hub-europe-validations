@@ -81,7 +81,7 @@ def main(local, force_pr=None):
     metadatas = [file for file in files_changed if pat_meta.match(file.filename) is not None]
     other_files = [file for file in files_changed if (pat.match(file.filename) is None and pat_meta.match(file.filename) is None)]
     
-    if os.environ.get('GITHUB_EVENT_NAME') == 'pull_request_target':
+    if os.environ.get('GITHUB_EVENT_NAME') == 'pull_request_target' and not local:
         # IF there are other fiels changed in the PR 
         #TODO: If there are other files changed as well as forecast files added, then add a comment saying so. 
         if len(other_files) > 0 and len(forecasts) >0:
@@ -200,7 +200,9 @@ def main(local, force_pr=None):
         warning_message = ""
         for file in warnings.keys():
             warning_message += str(file) + warnings[file] + "\n\n"
-        pr.create_issue_comment(comment)
+        
+        if not local:
+            pr.create_issue_comment(comment)
     
     
     forecasts_to_vis = False
@@ -219,6 +221,7 @@ def main(local, force_pr=None):
                 pr.create_issue_comment(comment)
                 
     shutil.rmtree("forecasts")
+    
 
 if __name__ == "__main__":
     
